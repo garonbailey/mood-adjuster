@@ -1,0 +1,24 @@
+<div class="container">
+	{{ctrl.message}}
+	<form ng-submit="ctrl.search()">
+		<h2>What's your current mood?</h2>
+		<select ng-model="ctrl.mood">
+			<option ng-value="sad" autocomplete="off">Sad</option>
+			<option ng-value="happy" autocomplete="off">Happy</option>
+			<option ng-value="angry" autocomplete="off">Angry</option>
+			<option ng-value="content" autocomplete="off">Content</option>
+			<option ng-value="nervous" autocomplete="off">Nervous</option>
+			<option ng-value="edgy" autocomplete="off">Edgy</option>
+			<option ng-value="annoyed" autocomplete="off">Annoyed</option>
+			<option ng-value="calm" autocomplete="off">Calm</option>
+			<option ng-value="relaxed" autocomplete="off">Relaxed</option>
+			<option ng-value="surprise" autocomplete="off">Surprise</option>
+		</select>
+		<h2>Do you want to change your mood?</h2>
+		<select ng-model="ctrl.change">
+			<option ng-value="change" autocomplete="off">Change My Mood</option>
+			<option ng-value="keep" autocomplete="off">Reinforce My Mood</option>
+		</select>
+		<input type="submit" value="Alter My Mood">
+	</form>
+</div>
