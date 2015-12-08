@@ -4,27 +4,37 @@
   <title>Mood Adjuster</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" charset="utf-8"></script>
   <script src="https://code.angularjs.org/1.4.7/angular-route.js" charset="utf-8"></script>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'app', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <base href="/">
 </head>
 <body>
 	<header>
 		<a href="/"><h1>Mood Adjuster</h1></a>
-		<ul>
-			<li><a href="/search">Change your mood</a></li>
-			<li><a href="/result">What was the result?</a></li>
-		</ul>
+		<a href="/search">
+			<div class="button">
+				Change your mood
+			</div>
+		</a>
 	</header>
 
 	<%= yield %>
 
-	<footer>
+	<div class="subfoot hidden">
 		<ul>
 			<li><a href="https://github.com/garonbailey/mood-adjuster">Github</a></li>
 			<li>&copy;2015 Garon Bailey</li>
 			<li><a href="https://www.linkedin.com/in/garonbailey">LinkedIn</a></li>
+		</ul>
+	</div>
+	<footer>
+		<ul>
+			<li>Info</li>
+			<li><img src="/images/giphy.gif"></li>
 		</ul>
 	</footer>
 

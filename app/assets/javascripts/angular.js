@@ -1,16 +1,25 @@
 var app = angular.module('MoodAdjuster', ['ngRoute']);
 
 app.controller('apiCtrl', ['$routeParams', '$http', function ($routeParams, $http) {
-	this.message = "I'm gonna show up on the screen";
+	var controller = this;
+	$http({
+		method: 'GET',
+		url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC"
+	}).then(function success(res) {
+		controller.gif = res.data.data.image_url;
+	}, function error(res) {
+		controller.message = "Error processing request"
+	});
 }]);
 
-app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($routeParams, $http, $scope) {
-	this.message = "Search Page; Form goes here!";
-
+app.controller('searchCtrl', ['$routeParams', '$http', '$scope', '$location', function ($routeParams, $http, $scope, $location) {
 	var controller = this;
+	this.gifUrl;
 	controller.search = function () {
 		var mood = controller.mood;
 		var action = controller.change;
+
+		this.gifUrl = controller.gifUrl;
 
 		if (action === "Reinforce My Mood") {
 			if (mood === "Surprise") {
@@ -18,7 +27,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data.image_url;
+					controller.message = "How does it make you feel?";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -27,7 +37,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Hope this is exactly the appeasement you're looking for.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -38,7 +49,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=happy&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Hope you feel better, buddy!";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -47,7 +59,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=miserable&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Did we successfully ruin your happiness, weirdo?";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -56,7 +69,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=peaceful&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Just tryin' to help you chill out, dude.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -65,7 +79,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=upset&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Did we successfully ruin your contented feelings?";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -74,7 +89,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=calm&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Here's something to calm your nerves.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -83,7 +99,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=laid-back&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "A little something to take the edge off.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -92,7 +109,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=pleased&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Just breathe . . . and check out this gif.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -101,7 +119,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=agitated&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "I won't judge your lifestyle. Hope this successfully stresses you out.";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -110,7 +129,8 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/search?q=tense&api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data[Math.floor(Math.random()*25)].images.original.url;
+					controller.message = "Being relaxed is for losers! Rage!";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
@@ -119,21 +139,15 @@ app.controller('searchCtrl', ['$routeParams', '$http', '$scope', function ($rout
 					method: 'GET',
 					url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC"
 				}).then(function success(res) {
-					console.log(res.data);
+					controller.gifUrl = res.data.data.image_url;
+					controller.message = "Surprise! It's a random gif!";
 				}, function error(res) {
 					controller.message = "Error processing request"
 				});
 			}
 		}
-
-		console.log("Selected Mood: ", mood);
-		console.log("Selected Action: ", action);
 	};
 }]);
-
-app.controller('resultCtrl', ['$routeParams', '$http', function ($routeParams, $http) {
-	this.message = "Result Page; Auto re-direct here?"
-}])
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode({ enabled: true });
@@ -146,11 +160,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 		when('/search', {
 			templateUrl:  '/angular_templates/searchin.html',
 			controller: 'searchCtrl',
-			controllerAs: 'ctrl'
-		}).
-		when('/result', {
-			templateUrl: '/angular_templates/result.html',
-			controller: 'resultCtrl',
 			controllerAs: 'ctrl'
 		}).
 		otherwise({

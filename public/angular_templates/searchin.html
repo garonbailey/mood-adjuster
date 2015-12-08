@@ -1,5 +1,4 @@
 <div class="container">
-	{{ctrl.message}}
 	<form ng-submit="ctrl.search()">
 		<h2>What's your current mood?</h2>
 		<select ng-model="ctrl.mood">
@@ -18,7 +17,11 @@
 		<select ng-model="ctrl.change">
 			<option ng-value="change" autocomplete="off">Change My Mood</option>
 			<option ng-value="keep" autocomplete="off">Reinforce My Mood</option>
-		</select>
+		</select><br/>
 		<input type="submit" value="Alter My Mood">
 	</form>
+	<div class="success">
+		<p>{{ctrl.message}}</p>
+		<img src="{{ctrl.gifUrl}}">
+	</div>
 </div>

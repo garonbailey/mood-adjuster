@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def index
   	render 'application/angular', layout: 'application'
   end
+
+  def search
+  	render 'application/angular', layout: 'application'
+  end
+
+  def result
+  	render 'application/angular', layout: 'application'
+  end
 end
