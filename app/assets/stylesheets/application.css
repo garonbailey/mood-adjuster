@@ -101,6 +101,7 @@ li {
 	bottom: 50px;
 	background-color: #111;
 	width: 100vw;
+	border-top: 2px solid lightgrey;
 }
 
 footer {
