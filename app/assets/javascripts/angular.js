@@ -163,7 +163,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 			controllerAs: 'ctrl'
 		}).
 		when('/404', {
-			templateUrl: '/angular_templates/404.html'
+			templateUrl: '/angular_templates/404.html',
+			controller: 'apiCtrl',
+			controllerAs: 'ctrl'
 		}).
 		otherwise({
 			redirectTo: '/404'
