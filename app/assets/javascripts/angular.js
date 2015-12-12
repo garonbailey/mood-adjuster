@@ -7,6 +7,7 @@ app.controller('apiCtrl', ['$routeParams', '$http', function ($routeParams, $htt
 		url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC"
 	}).then(function success(res) {
 		controller.gif = res.data.data.image_url;
+		console.log(controller.gif);
 	}, function error(res) {
 		controller.message = "Error processing request"
 	});
