@@ -23,7 +23,7 @@
 body {
 	text-align: center;
 	color: steelblue;
-	background-color: #7F8294;
+	background-color: floralwhite;
 	font-family: 'PT Sans Narrow', sans-serif;
 }
 
@@ -86,16 +86,13 @@ li {
 	width: 100%;
 }
 
-.result {
+.success {
 	max-width: 80vw;
 	margin-left: 10vw;
 	margin-right: 10vw;
-	min-height: 400px;
-	max-height: 100vh;
-	border: 2px solid #111;
 }
 
-.result img {
+.success img {
 	width: 100%;
 }
 
