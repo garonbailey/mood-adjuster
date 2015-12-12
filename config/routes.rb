@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/result' => 'application#result'
 
+  get '/404' => 'application#notfound'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

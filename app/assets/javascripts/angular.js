@@ -162,7 +162,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 			controller: 'searchCtrl',
 			controllerAs: 'ctrl'
 		}).
+		when('/404', {
+			templateUrl: '/angular_templates/404.html'
+		}).
 		otherwise({
-			redirectTo: '/'
+			redirectTo: '/404'
 		});
 }]);
